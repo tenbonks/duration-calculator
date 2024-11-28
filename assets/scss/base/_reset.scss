@@ -1,0 +1,100 @@
+@use "../abstracts/variables" as vars;
+
+/* Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+	margin: 0;
+}
+
+html {
+	background-color: vars.$color-primary;
+}
+
+body {
+
+	/* Theme font */
+	font-family: vars.$font-secondary;
+
+	/* Add accessible line-height */
+	line-height: 1.5;
+	/* Improve text rendering */
+	-webkit-font-smoothing: antialiased;
+
+	/* Theme colours */
+	background-color: vars.$off-white;
+	color: vars.$off-black;
+
+	/* Reset margins and paddings */
+	margin: 0;
+	padding: 0;
+
+}
+
+/* Improve media defaults */
+img, picture, video, canvas, svg {
+	display: block;
+	max-width: 100%;
+}
+
+/* Inherit fonts for form controls */
+input, button, textarea, select {
+	font: inherit;
+}
+
+/* Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+	overflow-wrap: break-word;
+}
+
+/* Improve line wrapping */
+p {
+	text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-wrap: balance;
+}
+
+ul, ol {
+	padding-left: vars.$container-gutter;
+}
+
+/* Just in case bootstrap is used, lets make it match the width of out grid */
+.container {
+	max-width: vars.$container-size-sm !important;
+
+	@media (min-width: vars.$screen-md) {
+		max-width: vars.$container-size-md !important;
+	}
+
+	@media (min-width: vars.$screen-lg) {
+		max-width: vars.$container-size-lg !important;
+	}
+
+	@media (min-width: vars.$screen-xl) {
+		max-width: vars.$container-size-xl !important;
+	}
+
+	@media (min-width: vars.$screen-xxl) {
+		max-width: vars.$container-size-xxl !important;
+	}
+}
+
+main {
+	position: relative;
+
+	// This site doesn't have a header, but otherwise, you'd want something like below
+	//padding-top: vars.$header-height-mobile;
+	//
+	//@media (min-width: vars.$screen-lg) {
+	//	padding-top: vars.$header-height-desktop;
+	//}
+
+	@supports (min-height: 100svh) {
+		min-height: 100svh;
+	}
+}

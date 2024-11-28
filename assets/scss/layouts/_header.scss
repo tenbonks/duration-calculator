@@ -1,0 +1,459 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mixins;
+
+#main-site-header {
+
+	// ------------------------------------------
+	// ------------ Header Variables
+	// -----------------------------------
+
+	$background-color: vars.$color-primary-muted;
+	$background-color-alt: vars.$color-primary-muted;
+	$color: vars.$black;
+	$color-alt: vars.$black;
+	$desktop: vars.$screen-lg;
+	$desktop-height: vars.$header-height-desktop;
+	$mobile-height: vars.$header-height-mobile;
+	$desktop-height-scrolled: vars.$header-height-desktop-scrolled;
+	$mobile-height-scrolled: vars.$header-height-mobile-scrolled;
+	$mobile-layout-breakpoint: vars.$screen-lg;
+	$menu-radius: vars.$rounding-xs;
+
+
+	// ------------------------------------------
+	// ------------ Header Layout and Colors
+	// ------------------------------------------
+	position: fixed;
+
+
+	// Make sure header is on a very high level
+	z-index: 1000000;
+
+
+	min-width: 100%;
+	background-color: $background-color;
+
+
+	#main-inner-header {
+
+		transition: all ease-in-out vars.$timing-instant;
+
+		// Rest all general text elements you find in a header
+		p, a, span, strong {
+			margin-bottom: 0;
+		}
+
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+
+		// ----------------------------------------------
+		// ---- Header Styles That apply to both Mobile, and Desktop
+		// ----------------------------------------------
+		// Top Level Main Menu Wrapper
+		// Top Level Main Menu Wrapper
+		nav.main-navigation {
+
+			display: flex;
+			align-items: center;
+
+			// Main menu styling, supports simple dropdown
+			ul#custom-wp-main-menu {
+				padding: 0;
+				margin: 0;
+				display: flex;
+
+				// Top Level Main Menu Link
+				li.custom-menu-item {
+					position: relative;
+					list-style: none;
+					margin-bottom: 0;
+
+					a {
+						display: inline-block;
+						width: 100%;
+						font-size: 16px;
+						font-weight: 600;
+						max-height: fit-content;
+						//padding: vars.$spacing-md vars.$spacing-xs;
+
+						span {
+							color: inherit !important;
+							font-weight: inherit !important;
+						}
+
+					}
+
+					ul.sub-menu {
+						margin: 0;
+						padding: 0;
+
+						li.sub-menu-item {
+							line-height: 1;
+							list-style: none;
+							font-size: 16px;
+							margin: 0;
+
+							a {
+								display: inline-block;
+								width: 100%;
+							}
+						}
+
+					}
+
+				}
+			}
+
+			.actions {
+				display: flex;
+				gap: vars.$spacing-xs;
+			}
+
+			ul#custom-wp-main-menu .custom-menu-item.has-children.has-mega-menu {
+
+			}
+
+			ul#custom-wp-main-menu .custom-menu-item.has-children a {
+
+			}
+		}
+
+		// ----------------------------------------------
+		// ---- // END Header Styles That apply to both Mobile, and Desktop
+		// ----------------------------------------------
+
+
+		// ----------------------------------------------
+		// ---- Mobile Specific Header Styles
+		// ----------------------------------------------
+		@media (max-width: calc($desktop - 1px)) {
+			height: $mobile-height;
+			// Top Level Mobile Main Menu Wrapper
+			nav.main-navigation {
+				position: absolute;
+
+				@include mixins.bootstrap-container-max-width;
+
+				width: 100vw;
+
+				@media (max-width: vars.$screen-sm) {
+					// Stops menu from touching the edge of the screen on small screens
+					width: calc(100vw - calc(#{vars.$container-gutter} * 2));
+				}
+
+				// display set to block when .on class applied to #main-site-header
+				display: none;
+
+				background-color: vars.$white;
+				flex-direction: column;
+
+				top: $mobile-height;
+
+				padding: vars.$spacing-xs 0;
+
+				// If you want the dropdown to span the whole height, then
+				height: calc(100svh - $mobile-height);
+				max-height: calc(100svh - $mobile-height);
+				overflow-y: auto;
+
+				@media (max-width: vars.$screen-sm) {
+					left: vars.$container-gutter;
+					right: vars.$container-gutter;
+				}
+
+				@media (min-width: vars.$screen-sm) {
+					@include mixins.abs-center-x;
+				}
+
+				// Mobile Main menu styling
+				ul#custom-wp-main-menu {
+
+					background-color: vars.$color-primary-muted;
+					border-radius: $menu-radius;
+
+					flex-direction: column;
+					margin-bottom: vars.$spacing-sm;
+
+					// Top Level Mobile Main Menu Link
+					li.custom-menu-item {
+						a {
+							font-size: 18px;
+							padding: vars.$spacing-xs;
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							border-radius: 0;
+
+							&:hover {
+								background-color: vars.$color-primary;
+								color: vars.$color-primary-muted;
+							}
+						}
+
+						&.active {
+							> a {
+								background-color: vars.$color-primary;
+								color: vars.$color-primary-muted;
+
+								span {
+									display: inline-block;
+									position: relative;
+
+									i {
+										font-size: 24px;
+										position: absolute;
+										right: -24px;
+										@include mixins.abs-center-y;
+									}
+								}
+
+							}
+						}
+
+						&:first-of-type > a {
+							border-radius: vars.$rounding-xs vars.$rounding-xs 0 0;
+						}
+
+						&:last-of-type > a {
+							border-radius: 0 0 vars.$rounding-xs vars.$rounding-xs;
+						}
+
+						ul.sub-menu {
+							li.sub-menu-item {
+								a {
+									font-size: 16px;
+									padding: 10px vars.$spacing-sm;
+
+									&:hover {
+										//background-color: vars.$color-primary-muted;
+									}
+								}
+
+								&.active {
+									> a {
+										background-color: vars.$color-primary;
+										color: vars.$color-primary-muted;
+
+										span {
+											i {
+												font-size: 18px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			#nav-toggle {
+				display: block;
+
+				#toggle-open {
+					display: block;
+				}
+
+				#toggle-close {
+					display: none;
+				}
+
+				#toggle-close, #toggle-open {
+					font-size: 30px;
+					padding: 2px 6px;
+				}
+			}
+
+
+		}
+		// ----------------------------------------------
+		// ---- // END Mobile Specific Header Styles
+		// ----------------------------------------------
+
+		// ----------------------------------------------
+		// ---- Desktop Specific Header Styles
+		// ----------------------------------------------
+		@media (min-width: $desktop) {
+			height: $desktop-height;
+
+			// Desktop Header Wrapper
+
+			// Top Level Desktop Main Menu Wrapper
+			nav.main-navigation {
+
+				display: flex;
+				flex-direction: row;
+				gap: vars.$spacing-sm;
+
+				// Desktop Main menu styling
+				ul#custom-wp-main-menu {
+					align-items: center;
+					gap: vars.$spacing-sm;
+
+					// Top Level Desktop Main Menu Link
+					li.custom-menu-item {
+
+						padding: vars.$spacing-sm 0;
+
+						a {
+						}
+
+						ul.sub-menu {
+
+							display: none;
+							position: absolute;
+							@include mixins.box-shadow;
+							border-radius: vars.$rounding-xs;
+
+							@include mixins.abs-center-x;
+							border-top: 3px solid vars.$color-primary;
+							min-width: 150px;
+							width: fit-content;
+							top: 50px;
+							padding: 0;
+							margin: 0;
+							background-color: vars.$white;
+							height: fit-content;
+
+
+							li.sub-menu-item {
+								text-align: center;
+
+								a {
+									position: relative;
+									padding: vars.$spacing-sm;
+
+									border-radius: vars.$rounding-xs;
+
+									&:hover {
+										background: vars.$color-primary;
+										color: vars.$color-primary-muted;
+									}
+								}
+							}
+
+						}
+
+						&:hover {
+
+
+							.sub-menu {
+								display: block;
+							}
+						}
+					}
+				}
+
+			}
+
+			#nav-toggle {
+				display: none;
+			}
+		}
+		// ----------------------------------------------
+		// ---- // END Desktop Specific Header Styles
+		// ----------------------------------------------
+
+
+	}
+
+	// ----------------------------------------------
+	// ---- Scrolled Only Styling
+	// ----------------------------------------------
+	&.scrolled:not(.opened) {
+
+		&::before {
+			height: calc(100vh - $mobile-height-scrolled);
+			@supports (height: 100svh) {
+				height: calc(100svh - $desktop-height-scrolled);
+			}
+
+			top: $mobile-height-scrolled;
+
+			@media (min-width: vars.$screen-lg) {
+				top: $desktop-height-scrolled;
+			}
+
+		}
+
+		#main-inner-header {
+
+			@media (max-width: $mobile-layout-breakpoint - 1px) {
+				height: vars.$header-height-mobile-scrolled !important;
+			}
+
+			@media (min-width: $mobile-layout-breakpoint) {
+				height: vars.$header-height-mobile-scrolled !important;
+			}
+
+			.main-navigation {
+				top: $mobile-height-scrolled;
+
+				@media (min-width: vars.$screen-lg) {
+					top: $desktop-height-scrolled;
+				}
+			}
+
+		}
+	}
+
+	// ----------------------------------------------
+	// ---- Nav Open Mobile Styling
+	// ----------------------------------------------
+	@media (max-width: $mobile-layout-breakpoint - 1px) {
+
+		&.opened {
+
+			&::before {
+				// These are essentially gutters when nav is open
+				position: absolute;
+				content: "";
+
+				height: calc(100vh - $mobile-height);
+				@supports (width: 100svh) {
+					height: calc(100svh - $mobile-height);
+				}
+
+				width: 100vw;
+				@supports (width: 100svw) {
+					width: 100svw;
+				}
+
+				background-color: vars.$white;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				top: vars.$header-height-mobile;
+				overflow: hidden;
+			}
+
+			#main-inner-header {
+
+				nav.main-navigation {
+					overflow-y: scroll;
+					display: block;
+					ul#custom-wp-main-menu {
+					}
+
+				}
+
+				#nav-toggle {
+					#toggle-open {
+						display: none;
+					}
+
+					#toggle-close {
+						display: block;
+					}
+				}
+			}
+
+		}
+	}
+}
+
+

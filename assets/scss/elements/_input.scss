@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as vars;
+
+input[type=text],
+input[type=password],
+input[type=number] {
+  width: 100%;
+  display: block;
+  border: none;
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$spacing-xs;
+}

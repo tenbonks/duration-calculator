@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dist/external-css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="dist/styles.min.css">
+
+    <title>Duration Calculator</title>
+</head>
+<body>
+  <main class="h-75vh">
+
+      <section class="section">
+          <div class="container">
+              <div class="row">
+                  <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+                      <div class="flex dir-col g-sm">
+                          <h1>Duration Calculator</h1>
+
+                          <div class="input-wrap">
+                              <label for="durationInput">Enter your hours and minutes</label>
+                              <textarea id="durationInput" rows="10" cols="30" placeholder="Paste durations here (e.g., 1h, 20m, 2h 15m)"></textarea>
+                          </div>
+
+                          <label for="csvInput"><strong>OR</strong> upload a csv file</label>
+                          <input type="file" id="csvInput" accept=".csv">
+                          <button onclick="calculateTotal()">Calculate Total</button>
+                          <p id="result"></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+    <script src="dist/script.min.js"></script>
+  </main>
+</body>
+</html>

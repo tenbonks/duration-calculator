@@ -1,0 +1,43 @@
+/*
+Classes generated:
+ - h-xs
+ - h-sm
+ - h-md
+ - h-lg
+ - h-xl
+ - h-full
+ - h-none
+  - h-25vh
+ - h-50vh
+ - h-75vh
+ - h-100vh
+*/
+
+// Define the height map using pixel values and special cases
+$heights: (
+        xs: 320px, // Extra small
+        sm: 480px, // Small
+        md: 768px, // Medium
+        lg: 1024px, // Large
+        xl: 1200px, // Extra large
+        full: 100%, // Full height
+        none: none, // No height restriction
+        25vh: 25vh, // 25% of the viewport height
+        50vh: 50vh, // 50% of the viewport height
+        75vh: 75vh, // 75% of the viewport height
+        100vh: 100vh // 100vh
+);
+
+// Generate height utility classes
+@each $key, $value in $heights {
+  .h-#{$key} {
+    height: $value;
+  }
+}
+
+// Special handling for '100vh' to use 100svh if the browser supports it
+@supports (--css: variables) { // CSS feature query to detect support for 100svh
+  .h-100vh {
+    height: 100svh; // Use 100svh if supported
+  }
+}

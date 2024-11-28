@@ -1,0 +1,61 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mixins;
+
+// Margin Utilities
+// Default (no breakpoint)
+// Example: Use `.vertical-center` to center an element vertically within a flex container.
+.vertical-center {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.mr-none {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.ml-none {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+// Base margin utilities
+@each $direction, $property in (m: margin, ml: margin-left, mr: margin-right, mt: margin-top, mb: margin-bottom) {
+	@each $size, $value in vars.$spacings-map {
+		.#{$direction}-#{$size} {
+			#{$property}: $value;
+		}
+	}
+	// Add a `none` version for each margin direction
+	.#{$direction}-none {
+		#{$property}: 0;
+	}
+}
+
+// Example usage:
+// `.m-xs` - Applies a small margin (defined by `$spacing-xs`) to all sides.
+// `.ml-lg` - Applies a large margin (defined by `$spacing-lg`) to the left side.
+// `.m-none` - Applies no margin to all sides.
+
+// Responsive Margin Utilities
+@each $bp in map-keys(vars.$breakpoints-map) {
+	@include mixins.respond-to($bp) {
+		@each $direction, $property in (m: margin, ml: margin-left, mr: margin-right, mt: margin-top, mb: margin-bottom) {
+			@each $size, $value in vars.$spacings-map {
+				.#{$direction}-#{$size}-#{$bp} {
+					#{$property}: $value;
+				}
+			}
+			// Add a `none` version for each breakpoint
+			.#{$direction}-none-#{$bp} {
+				#{$property}: 0;
+			}
+		}
+	}
+}
+
+// Example usage:
+// `.m-md-sm` - Applies a medium margin (defined by `$spacing-md`) on small screens (breakpoint `sm`).
+// `.mt-lg-xl` - Applies a large top margin (defined by `$spacing-lg`) on extra-large screens (breakpoint `xl`).
+// `.m-none-md` - Removes all margin on medium screens (breakpoint `md`).
+// `.ml-none-lg` - Removes left margin on large screens (breakpoint `lg`).

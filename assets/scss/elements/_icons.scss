@@ -1,0 +1,14 @@
+@use "../abstracts/variables" as vars;
+
+.icon {
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+
+	&.chevron-down {
+		background-image: url( '../assets/img/icons/chevron-down.svg' );
+	}
+}
+

@@ -1,0 +1,98 @@
+// Colours
+$color-primary: #06d6a0;
+$color-primary-offset-1: #06d6a0;
+$color-primary-offset-2: #06d6a0;
+$color-primary-muted: #F3FDFA;
+
+$color-secondary: #0C1B65;
+$color-secondary-offset-1: #0C1B65;
+$color-secondary-offset-2: #0C1B65;
+$color-secondary-muted: #B6BBD1;
+
+$color-tertiary: #F74926;
+$color-tertiary-offset-1: #F74926;
+$color-tertiary-offset-2: #F74926;
+$color-tertiary-muted: #FCBFB3;
+
+// Shades
+$white: #ffffff;
+$off-white: #EDF6FE;
+$black: #000000;
+$off-black: #231F20;
+$grey-light: #212529;
+$grey: #717171;
+$grey-dark: #212529;
+
+// Fonts
+$font-primary: 'Parkinsans', sans-serif;
+$font-secondary: 'Parkinsans' ,sans-serif;
+$font-icon: 'bootrap-icons';
+
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 32px;
+$spacing-lg: 64px;
+$spacing-xl: 128px;
+
+// Screen Sizes
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1400px;
+
+// Radii
+$rounded: 100%;
+$rounding-xs: 4px;
+$rounding-sm: $spacing-sm;
+$rounding-md: $spacing-md;
+$rounding-lg: $spacing-lg;
+
+// Timings
+$timing-instant: 0.1s;
+$timing-fast: 0.3s;
+$timing-slow: 0.8s;
+
+// Header Sizes
+$header-height-desktop: 100px;
+$header-height-mobile: 85px;
+$header-height-desktop-scrolled: 70px;
+$header-height-mobile-scrolled: 70px;
+
+// Container Sizes
+$container-gutter: 15px;
+$container-size-sm: 540px;
+$container-size-md: 720px;
+$container-size-lg: 960px;
+$container-size-xl: 1140px;
+$container-size-xxl: 1310px;
+
+//$screen-sm: 576px; 541
+//$screen-md: 768px; 733
+//$screen-lg: 992px; 957
+//$screen-xl: 1200px; 1010
+//$screen-xxl: 1400px; 1310
+
+
+// Mappings - these are used within scss files when needed, for example _flex.scss and _grid.scss
+$breakpoints-map: (
+	sm: $screen-sm,
+	md: $screen-md,
+	lg: $screen-lg,
+	xl: $screen-xl,
+	xxl: $screen-xxl
+);
+
+$spacings-map: (
+	xs: $spacing-xs,
+	sm: $spacing-sm,
+	md: $spacing-md,
+	lg: $spacing-lg,
+	xl: $spacing-xl
+);
+
+$container-sizes-map : (
+
+)

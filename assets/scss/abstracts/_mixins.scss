@@ -1,0 +1,108 @@
+@use "variables" as vars;
+
+@mixin box-shadow {
+	box-shadow: 0 0 20px -10px rgba(vars.$black, 0.8);
+}
+
+@mixin abs-center () {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin abs-center-y () {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin abs-center-x () {
+	position: absolute;
+	left: 50%;
+
+	transform: translateX(-50%);
+}
+
+@mixin background-image () {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+@mixin bootstrap-container-max-width {
+	max-width: vars.$container-size-sm;
+
+	@media (min-width: vars.$screen-md) {
+		max-width: vars.$container-size-md;
+	}
+
+	@media (min-width: vars.$screen-lg) {
+		max-width: vars.$container-size-lg;
+	}
+
+	@media (min-width: vars.$screen-xl) {
+		max-width: vars.$container-size-xl;
+	}
+
+	@media (min-width: vars.$screen-xxl) {
+		max-width: vars.$container-size-xxl;
+	}
+}
+
+@mixin bootstrap-container-max-width-grid {
+	grid-template-columns: minmax(vars.$container-gutter, 1fr) minmax(0px, $grid-container-sm) minmax(vars.$container-gutter,1fr);
+
+	@media (min-width: vars.$screen-md) {
+		grid-template-columns: minmax(vars.$container-gutter, 1fr) minmax(0px, vars.$container-size-md) minmax(vars.$container-gutter,1fr);
+	}
+
+	@media (min-width: vars.$screen-lg) {
+		grid-template-columns: minmax(vars.$container-gutter, 1fr) minmax(0px, vars.$container-size-lg) minmax(vars.$container-gutter,1fr);
+	}
+
+	@media (min-width: vars.$screen-xl) {
+		grid-template-columns: minmax(vars.$container-gutter, 1fr) minmax(0px, vars.$container-size-xl) minmax(vars.$container-gutter,1fr);
+	}
+
+	@media (min-width: vars.$screen-xxl) {
+		grid-template-columns: minmax(vars.$container-gutter, 1fr) minmax(0px, vars.$container-size-xxl) minmax(vars.$container-gutter,1fr);
+	}
+}
+
+@mixin respond-to($breakpoint) {
+
+	// You'll see this used in _flex.scss
+
+	@if map-has-key(vars.$breakpoints-map, $breakpoint) {
+		@media (min-width: map-get(vars.$breakpoints-map, $breakpoint)) {
+			@content;
+		}
+	} @else {
+		@warn "No breakpoint found for `#{$breakpoint}`. Available breakpoints: #{map-keys(vars.$breakpoints-map)}";
+	}
+}
+
+@mixin remove-list-styling($in-ul : false) {
+
+	@if( $in-ul ) {
+
+		margin: 0;
+		padding: 0;
+
+		li {
+			list-style: none;
+		}
+	}
+	@else {
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				list-style: none;
+			}
+		}
+	}
+}
+

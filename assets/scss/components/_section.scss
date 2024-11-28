@@ -1,0 +1,45 @@
+@use "../abstracts/variables" as vars;
+
+section.section {
+	position: relative;
+	display: block;
+	//z-index: 100;
+
+	&.spacing-sm {
+		padding-top: vars.$spacing-sm;
+		padding-bottom: vars.$spacing-sm;
+	}
+
+	&.spacing-md {
+		padding-top: vars.$spacing-md;
+		padding-bottom: vars.$spacing-md;
+	}
+
+	&.spacing-lg {
+		padding-top: vars.$spacing-lg;
+		padding-bottom: vars.$spacing-lg;
+	}
+
+	&.spacing-xl {
+		padding-top: vars.$spacing-xl;
+		padding-bottom: vars.$spacing-xl;
+	}
+
+	&.spacing-lg,
+	&.spacing-xl {
+		@media (max-width: vars.$screen-lg) {
+			padding-top: vars.$spacing-md;
+			padding-bottom: vars.$spacing-md;
+		}
+	}
+
+	&.full-vh {
+		display: flex;
+		min-height: fit-content;
+		height: 100vh;
+		padding-top: vars.$spacing-lg;
+		padding-bottom: vars.$spacing-lg;
+		align-items: center;
+		justify-content: flex-start;
+	}
+}

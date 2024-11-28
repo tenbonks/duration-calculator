@@ -1,0 +1,30 @@
+@use "../abstracts/variables" as vars;
+
+.button, button {
+	white-space: nowrap;
+	transition: vars.$timing-instant;
+	background-color: vars.$color-primary;
+	border-radius: vars.$rounding-xs;
+	outline: none;
+	border: none;
+	padding: vars.$spacing-xs vars.$spacing-sm;
+	color: vars.$off-white;
+	display: flex;
+	align-items: center;
+	gap: vars.$spacing-xs;
+	max-width: fit-content;
+
+	font-weight: 600;
+	font-size: 18px;
+
+	&.large {
+		font-size: 22px;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: darken(vars.$color-primary, 5);
+		color: vars.$off-white;
+	}
+}
+

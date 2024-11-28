@@ -1,0 +1,28 @@
+/*
+Classes generated
+ - max-w-xs
+ - max-w-sm
+ - max-w-md
+ - max-w-lg
+ - max-w-xl
+ - max-w-full
+ - max-w-none
+*/
+
+// Define the max-width map using pixel values
+$max-widths: (
+	xs: 320px,  // Extra small
+	sm: 480px,  // Small
+	md: 768px,  // Medium
+	lg: 1024px, // Large
+	xl: 1200px, // Extra large
+	full: 100%, // Full width
+	none: none  // No restriction
+);
+
+// Generate max-width utility classes
+@each $key, $value in $max-widths {
+	.max-w-#{$key} {
+		max-width: $value;
+	}
+}

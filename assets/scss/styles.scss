@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+// reference to the architecture of SCSS structure
+// https://matthewelsom.com/blog/simple-scss-playbook.html
+
+//Vendor
+@forward "vendor/__vendor-dir";
+
+//Abstracts
+@forward "abstracts/__abstracts-dir";
+
+// Utilities
+@forward "utilities/__utilities-dir";
+
+//Base Styles
+@forward "base/__base-dir";
+
+//Elements
+@forward "elements/__elements-dir";
+
+//Components
+@forward "components/__components-dir";
+
+//Layout
+@forward "layouts/__layouts-dir";

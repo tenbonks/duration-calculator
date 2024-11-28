@@ -1,0 +1,7 @@
+package-lock.json
+node_modules
+.map
+.idea
+
+# I am not ignoring dist dir due to running this on github pages, so the compiled styles and js need to be available for it
+# Maybe there is a better way to do this?
