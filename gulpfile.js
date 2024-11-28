@@ -21,11 +21,11 @@ const paths = {
 	css: {
 		watch: './assets/external/css/**/*.css',
 		src: './assets/external/css/*.css',
-		dest: './dist/external-css'  // Updated to an external folder
+		dest: './dist/external/css'  // Updated to 'external/css'
 	}
 };
 
-// Ensure `dist` and `dist/external-css` directories exist
+// Ensure `dist` and `dist/external/css` directories exist
 function ensureDistDir() {
 	if (!fs.existsSync(paths.scss.dest)) {
 		fs.mkdirSync(paths.scss.dest, { recursive: true });
@@ -77,7 +77,7 @@ function minifyExternalCss(done) {
 		.pipe(cleanCSS())
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(paths.css.dest))  // Now goes to dist/external-css
+		.pipe(gulp.dest(paths.css.dest))  // Now writes to 'external/css'
 		.on('end', () => {
 			console.log("External CSS minified successfully!");
 			done();
