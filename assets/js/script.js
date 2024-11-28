@@ -27,15 +27,3 @@ function calculateTotal() {
 	document.getElementById('result').textContent =
 		`Total: ${totalHours} hours ${totalMinutes} minutes`;
 }
-
-document.getElementById('csvInput').addEventListener('change', function(event) {
-	const file = event.target.files[0];
-	if (file) {
-		const reader = new FileReader();
-		reader.onload = function(e) {
-			const csvContent = e.target.result;
-			document.getElementById('durationInput').value = csvContent;
-		};
-		reader.readAsText(file);
-	}
-});
